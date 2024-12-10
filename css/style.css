@@ -605,6 +605,61 @@ body
     }
 
 
+    /* Productos */
+.producto {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    margin: 10px;
+}
+
+.producto img {
+    width: 100%;
+    height: auto;
+}
+
+.producto button {
+    margin-top: 10px;
+}
+
+/* Carrito */
+#carrito {
+    margin-top: 50px;
+}
+
+#carrito-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+#carrito-items li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+#carrito-items button {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#vaciar-carrito {
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#vaciar-carrito:hover {
+    background-color: #333;
+}
+
+
+
 
 
 
