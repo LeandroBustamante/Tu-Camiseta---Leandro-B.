@@ -579,4 +579,34 @@ body
         word-wrap: break-word;      
         white-space: normal;         
     }
+
+
+    /* Para el formulario de contacto */
+    #mensaje-validacion {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 14px;
+        display: none; /* Oculto por defecto */
+    }
+
+    /* Estilo de mensajes de error */
+    #mensaje-validacion.error {
+        background-color: #f8d7da;
+        color: #842029;
+        border: 1px solid #f5c2c7;
+    }
+
+    /* Estilo de mensajes de éxito */
+    #mensaje-validacion.success {
+        background-color: #d1e7dd;
+        color: #0f5132;
+        border: 1px solid #badbcc;
+    }
+
+
+
+
+
+    
 }

@@ -88,7 +88,7 @@
 
 
     <section id="resenas">
-        <h2>Qué dicen nuestros clientes</h2>
+        <h2>Mirá lo que dicen nuestros clientes</h2>
         <div class="resenas-container">
             <div class="resena">
                 <img src="./Enlaces/assets/img/javier-milei-sonrie_1200_800-2521905049.webp" alt="Foto de Javier Milei" class="foto-cliente">
@@ -205,7 +205,7 @@
     <section id="contacto">
         <h2>Contactanos</h2>
         <h3>¿Tenés alguna otra consulta? ¡Enviános un mensaje!</h3>
-        <form action="https://formspree.io/f/xqakwoek" method="POST">
+        <form id="form-contacto" action="https://formspree.io/f/xqakwoek" method="POST">
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -223,6 +223,7 @@
     
             <button type="submit">Enviar</button>
         </form>
+        <div id="mensaje-validacion"></div>
 
     
         <div class="social-media">
@@ -250,7 +251,7 @@
             </p>
         </div>
     </footer>
-    
 
+    <script src="./js/script.js"></script>
 </body>
 </html>
