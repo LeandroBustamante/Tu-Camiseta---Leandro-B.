@@ -35,37 +35,64 @@ body
     }
     
 
-    nav
-    {
+    nav {
         grid-area: menu;
-        background-color: #003366; 
+        background-color: #003366;
         padding: 1.8rem;
-
-        ul
-        {
-            list-style: none;
-            text-align: center;
-
-            li 
-            {
-                display: inline;
-                margin: 1rem;
-                padding: 0 1rem;
-                a
-                {
-                    text-decoration: none;
-                    color: white;
-                    font-size: 1.2rem;  
-                    font-weight: bold; 
-                }
-
-                a:hover 
-                {
-                    color: greenyellow; 
-                    background-color: #00509e; 
-                }
-            }
-        }
+    }
+    
+    nav ul {
+        list-style: none;
+        text-align: center;
+        display: flex; /* Mantengo el display: flex para alinear los elementos en fila */
+        justify-content: center; /* Cambié para que los elementos queden centrados, no tan separados */
+        align-items: center;
+        padding: 0;
+    }
+    
+    nav ul li {
+        display: inline-block; /* Asegura que los elementos se alineen como bloque en línea */
+        margin: 0 1.8rem; /* Márgenes ajustados para mantener la separación */
+    }
+    
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    
+    nav ul li a:hover {
+        color: greenyellow;
+        background-color: #00509e;
+    }
+    
+    li:last-child {
+        display: flex; /* Flex para alinear el icono y el contador */
+        align-items: center; /* Centra el contenido verticalmente */
+        justify-content: center;
+    }
+    
+    li:last-child a {
+        border: none;
+        padding: 0.5rem;
+        position: relative;
+    }
+    
+    li:last-child a:hover {
+        border-radius: 50%;
+    }
+    
+    .count {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: 12px;
+        color: var(--primary-color);
+        background-color: var(--secondary-color);
+        padding: 0 0.25rem;
+        border: 1px solid var(--primary-color);
+        border-radius: 50%;
     }
 
 
@@ -605,58 +632,9 @@ body
     }
 
 
-    /* Productos */
-.producto {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    width: 200px;
-    margin: 10px;
-}
-
-.producto img {
-    width: 100%;
-    height: auto;
-}
-
-.producto button {
-    margin-top: 10px;
-}
-
-/* Carrito */
-#carrito {
-    margin-top: 50px;
-}
-
-#carrito-items {
-    list-style-type: none;
-    padding: 0;
-}
-
-#carrito-items li {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-}
-
-#carrito-items button {
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-#vaciar-carrito {
-    background-color: #444;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-}
-
-#vaciar-carrito:hover {
-    background-color: #333;
-}
+    .ocultar-carrito {
+        display: none;
+    }
 
 
 

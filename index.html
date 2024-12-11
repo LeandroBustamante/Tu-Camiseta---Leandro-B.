@@ -19,22 +19,32 @@
 
 
 <body>
+    
     <header>
         <h2><strong>3 Y 6 CUOTAS SIN INTERES</strong> CON TODOS LOS BANCOS* <strong>| ENVIO GRATIS</strong> A PARTIR DE $149.999</h2>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#inicio">INICIO</a></li>
+            <li><a href="./index.html">INICIO</a></li>
             <li><a href="#tienda">TIENDA</a></li>
             <li><a href="#sobre-nosotros">NOSOTROS</a></li>
             <li><a href="#contacto">CONTACTO</a></li>
             <li><a href="#donde-nos-encontras">UBICACIÓN</a></li>
+            <li>
+                <a href="./pages/carrito.html" >
+                   <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
+                      <path fill="currentColor"
+                         d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1m-9-1a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1M18 6H4.27l2.55 6H15c.33 0 .62-.16.8-.4l3-4c.13-.17.2-.38.2-.6a1 1 0 0 0-1-1m-3 7H6.87l-.77 1.56L6 15a1 1 0 0 0 1 1h11v1H7a2 2 0 0 1-2-2a2 2 0 0 1 .25-.97l.72-1.47L2.34 4H1V3h2l.85 2H18a2 2 0 0 1 2 2c0 .5-.17.92-.45 1.26l-2.91 3.89c-.36.51-.96.85-1.64.85" />
+                   </svg>
+                   <div class="count"></div>
+                </a>
+             </li>
         </ul>
     </nav>
 
     <main id="inicio">
-        <h1>Tu Camiseta</h1>
+        <h1>TU CAMISETA</h1>
         <p>Desde los clásicos retro que nunca pasan de moda hasta ediciones especiales que marcan tendencia.</p>
         <p>Conseguí la camiseta de fútbol que representa tu pasión y llevála con orgullo.</p>
     </main>
@@ -43,7 +53,7 @@
         <h2>Tienda</h2>
         <div class="container">
             <div class="card">
-                <a href="./pages/producto.html">
+                <a href="./pages/equipos.html">
                     <img src="./Enlaces/assets/img/equipos.jpg" alt="Imagen del producto">
                     <div class="item">
                         <h3>Equipos</h3>
@@ -54,7 +64,7 @@
             </div>
 
             <div class="card">
-                <a href="./pages/producto.html">
+                <a href="./pages/selecciones.html">
                     <img src="./Enlaces/assets/img/mundo.jpg" alt="Imagen del producto">
                     <div class="item">
                         <h3>Selecciones</h3>
@@ -64,7 +74,7 @@
             </div>
 
             <div class="card">
-                <a href="./pages/producto.html">
+                <a href="./pages/retro.html">
                     <img src="./Enlaces/assets/img/retro1.jpg" alt="Imagen del producto">
                     <div class="item">
                         <h3>Camisetas Retro</h3>
@@ -75,7 +85,7 @@
             </div>
 
             <div class="card">
-                <a href="./pages/producto.html">
+                <a href="./pages/especiales.html">
                     <img src="./Enlaces/assets/img/camisetas-especiales.jpg" alt="Imagen del producto">
                     <div class="item">
                         <h3>Ediciones Especiales</h3>
@@ -86,54 +96,18 @@
         </div>
     </section>
 
-    <!-- Sección de productos -->
-    <section id="productos">
-        <h2>Productos</h2> <!-- Título de la sección que indica que está mostrando productos -->
 
-        <!-- Contenedor de productos -->
-        <div class="productos-container">
-            
-            <!-- Producto 1 -->
-            <div class="producto" data-id="1"> <!-- Cada producto tiene un atributo data-id único para identificación -->
-                <img src="./Enlaces/assets/img/equipos.jpg" alt="Imagen del producto"> <!-- Imagen del producto -->
-                <h3>Equipos</h3> <!-- Nombre del producto -->
-                <p>$5000</p> <!-- Precio del producto -->
-                <button class="agregar-carrito">Agregar al carrito</button> <!-- Botón para añadir al carrito -->
-            </div>
 
-            <!-- Producto 2 -->
-            <div class="producto" data-id="2">
-                <img src="./Enlaces/assets/img/mundo.jpg" alt="Imagen del producto">
-                <h3>Selecciones</h3>
-                <p>$4000</p>
-                <button class="agregar-carrito">Agregar al carrito</button>
-            </div>
 
-            <!-- Aquí se pueden agregar más productos de la misma manera -->
-        </div>
-    </section>
-
-    <!-- Sección de carrito -->
+<!-- Sección del carrito, oculta mediante CSS -->
+<div class="ocultar-carrito">
     <section id="carrito">
-        <h2>Carrito de Compras</h2> <!-- Título de la sección del carrito -->
-
-        <!-- Lista de productos en el carrito -->
-        <ul id="carrito-items"> 
-            <!-- Los productos agregados al carrito se mostrarán aquí dinámicamente -->
-        </ul>
-
-        <!-- Total de la compra -->
-        <p>Total: $<span id="total-carrito">0</span></p> <!-- El total se actualiza dinámicamente -->
-
-        <!-- Botón para vaciar el carrito -->
-        <button id="vaciar-carrito">Vaciar Carrito</button>
+        <h1>Tu Carrito</h1>
+        <div id="carrito-lista"></div>
+        <p id="total-compra">Total: $0.00</p>
+        <button class="vaciar-carrito" id="vaciar-carrito">Vaciar Carrito</button>
     </section>
-
-
-
-
-    
-
+</div>
 
 
     <section id="resenas">
