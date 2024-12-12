@@ -215,6 +215,34 @@ body
     }
 
 
+    /* Botón "Ver más" con azul, letras blancas gruesas y forma cuadrada */
+.btn-ver-mas {
+    background-color: #3498db; /* Azul principal */
+    color: white; /* Letras blancas */
+    padding: 10px 20px; /* Ajuste del tamaño del botón */
+    border-radius: 5px; /* Borde ligeramente redondeado */
+    cursor: pointer;
+    font-size: 1rem; /* Tamaño de texto adecuado */
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+}
+
+.btn-ver-mas:hover {
+    background-color: blue; /* Azul más oscuro en hover */
+    transform: translateY(-3px); /* Efecto visual al pasar el mouse */
+}
+
+
+
+
+
+
+
+
+
     #resenas 
     {
         text-align: center;
@@ -518,7 +546,7 @@ body
     
     button:hover 
     {
-        background-color: #2980b9;
+        background-color: blue;
     }
 
     .social-media 

@@ -241,6 +241,24 @@ section h2 {
     background-color: #0056b3;
 }
 
+
+.add-to-cart {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.add-to-cart:hover {
+    background-color: #0056b3;
+}
+
+
+
+
 /* Estilos adicionales */
 #resenas {
     text-align: center;
