@@ -352,7 +352,6 @@ section h2 {
 }
 
 .comprar:hover {
-    background-color: #1e3c5b; /* Azul más oscuro al pasar el cursor */
     transform: scale(1.05);
 }
 
