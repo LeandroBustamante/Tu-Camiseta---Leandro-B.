@@ -15,6 +15,9 @@
 
     <!--Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 
 <body>
@@ -40,16 +43,44 @@
              </li>
         </ul>
     </nav>
+
+
+
+
+<!-- Sección del carrito -->
+<section id="carrito">
+    <h1>Mi Carrito</h1>
+    <table id="tabla-carrito">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody id="carrito-lista">
+            <!-- Aquí se llenará el carrito dinámicamente -->
+            <!-- Ejemplo de fila del carrito -->
+            <tr>
+                <td class="producto">Camiseta Fútbol</td>
+                <td class="precio">$25.00</td>
+                <td class="eliminar">
+                    <button class="btn-eliminar">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="total-compra">Total: $0.00</p>
+    <div class="botones">
+        <button class="vaciar-carrito" id="vaciar-carrito">Vaciar Carrito</button>
+        <button class="comprar" id="comprar">Comprar ahora >></button>
+    </div>
+</section>
+
+
     
 
 
-    <!-- Sección del carrito -->
-    <section id="carrito">
-        <h1>Mi Carrito</h1>
-        <div id="carrito-lista"></div>
-        <p id="total-compra">Total: $0.00</p>
-        <button class="vaciar-carrito" id="vaciar-carrito">Vaciar Carrito</button>
-    </section>
 
     
 

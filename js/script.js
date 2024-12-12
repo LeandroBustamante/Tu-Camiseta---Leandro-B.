@@ -15,20 +15,29 @@ function actualizarCarrito() {
     // Calcular el total
     let total = 0;
     carrito.forEach(producto => {
-        const productoDiv = document.createElement('div');
-        productoDiv.classList.add('producto');
+        // Crear una fila para cada producto
+        const fila = document.createElement('tr');
 
-        productoDiv.innerHTML = `
-            <p>${producto.nombre} - $${producto.precio}</p>
-            <button class="eliminar" data-id="${producto.id}">Eliminar</button>
+        // Formatear precio y total con puntos como separadores de miles
+        const precioFormateado = producto.precio.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+        const totalProducto = (producto.precio * producto.cantidad).toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+        
+
+        fila.innerHTML = `
+            <td>${producto.nombre}</td>
+            <td>${precioFormateado}</td>
+            <td><button class="btn-eliminar" data-id="${producto.id}"><i class="fas fa-trash-alt"></i> <!-- Ícono de basura --></button></td>
+
         `;
-        carritoLista.appendChild(productoDiv);
+        
+        
+        carritoLista.appendChild(fila);
 
-        total += producto.precio;
+        total += producto.precio * producto.cantidad;
     });
 
-    // Mostrar el total
-    totalCompra.textContent = `Total: $${total.toFixed(2)}`;
+    // Mostrar el total con formato
+    totalCompra.textContent = `Total: ${total.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}`;
 
     // Actualizar el contador de productos en el icono del carrito
     countElement.textContent = carrito.length;
@@ -39,7 +48,7 @@ function actualizarCarrito() {
 
 // Función para agregar al carrito
 function agregarAlCarrito(id, nombre, precio) {
-    carrito.push({ id, nombre, precio });
+    carrito.push({ id, nombre, precio, cantidad: 1 });
     actualizarCarrito();
 }
 
@@ -65,19 +74,36 @@ botonesAgregar.forEach(boton => {
         const tarjetaProducto = boton.closest('.card');
         const id = tarjetaProducto.getAttribute('data-id');
         const nombre = `${tarjetaProducto.querySelector("p").textContent} (${tarjetaProducto.querySelector("h3").textContent.trim()})`;
-        const precio = parseFloat(tarjetaProducto.querySelector("p:nth-of-type(2)").textContent.replace('$', '').replace(',', ''));
-        
+        const precio = parseFloat(tarjetaProducto.querySelector("p:nth-of-type(2)").textContent.replace('$', '').replace(/\./g, '').replace(',', '.'));
 
-        
         agregarAlCarrito(id, nombre, precio);
     });
 });
 
 // Eliminar productos del carrito
 carritoLista.addEventListener('click', (event) => {
-    if (event.target.classList.contains('eliminar')) {
-        const id = event.target.getAttribute('data-id');
+    if (event.target.classList.contains('btn-eliminar') || event.target.closest('.btn-eliminar')) {
+        const id = event.target.getAttribute('data-id') || event.target.closest('.btn-eliminar').getAttribute('data-id');
         eliminarDelCarrito(id);
+    }
+});
+
+// Actualizar la cantidad de productos
+carritoLista.addEventListener('change', (event) => {
+    if (event.target.classList.contains('cantidad-producto')) {
+        const id = event.target.getAttribute('data-id');
+        const cantidad = parseInt(event.target.value);
+
+        if (cantidad > 0) {
+            // Actualizar la cantidad del producto
+            const producto = carrito.find(p => p.id === id);
+            if (producto) {
+                producto.cantidad = cantidad;
+                actualizarCarrito();
+            }
+        } else {
+            alert("La cantidad no puede ser menor que 1.");
+        }
     }
 });
 
@@ -85,99 +111,6 @@ carritoLista.addEventListener('click', (event) => {
 document.addEventListener('DOMContentLoaded', function() {
     actualizarCarrito();
 });
-
-
-
-
-
-
-
-
-
-
-// Para el formulario de contacto
-document.getElementById('form-contacto').addEventListener('submit', async function (e) 
-{
-    e.preventDefault(); // Evita la redirección predeterminada
-
-    const nombre = document.getElementById('nombre').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const mensaje = document.getElementById('mensaje').value.trim();
-    const mensajeValidacion = document.getElementById('mensaje-validacion');
-    const botonEnviar = e.target.querySelector('button[type="submit"]');
-
-    // Resetear estado
-    mensajeValidacion.className = "";
-    mensajeValidacion.style.display = "none";
-    mensajeValidacion.textContent = "";
-    botonEnviar.disabled = true; // Desactivar el botón para evitar múltiples envíos
-
-    // Validar campos
-    if (!nombre || !email || !mensaje) 
-    {
-        mensajeValidacion.classList.add("error");
-        mensajeValidacion.textContent = "Todos los campos son obligatorios.";
-        mensajeValidacion.style.display = "block";
-        botonEnviar.disabled = false; // Reactivar el botón
-        return;
-    }
-
-    // Validar formato del correo
-    const emailRegex = /^\S+@\S+\.\S+$/;
-    if (!emailRegex.test(email)) 
-    {
-        mensajeValidacion.classList.add("error");
-        mensajeValidacion.textContent = "El formato del correo no es válido.";
-        mensajeValidacion.style.display = "block";
-        botonEnviar.disabled = false; // Reactivar el botón
-        return;
-    }
-
-    // Enviar datos a Formspree
-    try 
-    {
-        const response = await fetch('https://formspree.io/f/xqakwoek', 
-        {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nombre, email, mensaje }),
-        });
-
-        if (response.ok) 
-        {
-            // Mostrar mensaje de éxito
-            mensajeValidacion.classList.add("success");
-            mensajeValidacion.textContent = "¡Consulta enviada con éxito!";
-            mensajeValidacion.style.display = "block";
-
-            // Limpiar formulario
-            document.getElementById('nombre').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('mensaje').value = '';
-
-            // Ocultar mensaje después de 5 segundos
-            setTimeout(function() 
-            {
-                mensajeValidacion.style.display = "none";
-            }, 6000);
-
-        } else 
-        {
-            throw new Error("Hubo un problema al enviar el formulario.");
-        }
-
-    } catch (error) 
-    {
-        mensajeValidacion.classList.add("error");
-        mensajeValidacion.textContent = "Hubo un error al enviar el formulario. Por favor, intentá nuevamente.";
-        mensajeValidacion.style.display = "block";
-
-    } finally 
-    {
-        botonEnviar.disabled = false; // Reactivar el botón
-    }
-});
-
 
 
 
